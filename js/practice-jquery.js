@@ -35,17 +35,14 @@ $( document ).ready(function() {
 		$selected = $(e.currentTarget);
 		$content = $(e.currentTarget);
 
-		$editable.show();
 		$editable.val( $selected.text() );
+		$selected.replaceWith($editable.show());
 		$editable.select();
-		$editable.blur(function() {
+		$editable.blur( function() {
 			$editable.hide();
-			$selected.text($editable.val()); 
-
+			$selected.text($editable.val());
+			$editable.replaceWith($selected);
 		});
-
-		//$modal.show();
-		//$editable.val( $selected.text() )
 
 	});
 
