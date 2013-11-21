@@ -50,3 +50,23 @@ a.test {
 #editableText {
 	display: none;
 }
+
+.container-items {
+	padding: 0px;
+}
+
+.container-items li {
+	list-style: none;
+	margin: 0px;
+	padding: 0px 0px 10px 0px;
+	border: 1px solid lightgrey;
+	height: 94px;
+}
+
+.done {
+	background-color: blue;
+}
+
+.container-items .item .delete-item {
+	display: none;
+}

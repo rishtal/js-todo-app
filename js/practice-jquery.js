@@ -20,9 +20,21 @@ $( document ).ready(function() {
 		if( !value ){
 			$(".error").fadeIn("slow").delay(800).fadeOut("slow");
 		} else {
-			$itemsContainer.append("<li class='item'>" + value + "</li>");
+			$itemsContainer.append("<li class='item'>" + "<input class='checkbox' type='checkbox'>" + "<p>" + value + "</p>" + "<button class='delete-item'>Delete</button>" + "</li>");
 			$itemValue.val("");
 		}
+	});
+
+	$itemsContainer.on("click", ".item .delete-item", function(e){
+		$(this).closest(".item").remove();
+	});
+
+	$itemsContainer.on('mouseenter', '.item', function(e){
+		$(this).find('.delete-item').show();
+	});
+
+	$itemsContainer.on('mouseleave', '.item', function(e){
+		$(this).find('.delete-item').hide();
 	});
 
 	//Empty all items in "container-items" class
@@ -30,18 +42,37 @@ $( document ).ready(function() {
 		$itemsContainer.empty();
 	});
 
-	//click an item, open a window with the contents of item
-	$itemsContainer.on("click", ".item", function(e) {	
-		$selected = $(e.currentTarget);
-		$content = $(e.currentTarget);
+	//checkbox for item - if item is done/not done show appropriate css
+	$itemsContainer.on("click", ".item .checkbox", function(e){
 
+		if($(this).is(":checked")){
+			$(this).closest(".item").addClass("done");
+		} else {
+			$(this).closest(".item").removeClass("done");
+		}
+
+	});
+
+	//click an item, open a window with the contents of item
+	$itemsContainer.on("click", ".item p", function(e) {	
+		$selected = $(e.currentTarget);
+		
 		$editable.val( $selected.text() );
 		$selected.replaceWith($editable.show());
 		$editable.select();
+
+		$editable.keyup(function(e){
+			if(e.which === 13) {
+				$editable.hide();
+				$selected.text($editable.val());
+				$editable.replaceWith("<p>" + $selected.text() + "</p>");
+			}
+		});
+
 		$editable.blur( function() {
 			$editable.hide();
 			$selected.text($editable.val());
-			$editable.replaceWith($selected);
+			$editable.replaceWith("<p>" + $selected.text() + "</p>");
 		});
 
 	});
@@ -57,73 +88,6 @@ $( document ).ready(function() {
 
 	});
 
-
-	// var value = "";
-
-	// //key up on keyboard event handler
-	// $itemValue.keyup(function( event ){
-		
-	// 	value = $itemValue.val();
-
-	// 	//if user pressed enter
-	// 	if(event.which === 13){
-	// 		if( !$(this).val() ){
-	// 			$(".error").fadeIn("slow").delay(800).fadeOut("slow");
-	// 		} else {
-	// 			$itemsContainer.append("<li class='item'>" + value + "</li>");
-	// 			$itemValue.val("");
-	// 			value = "";	
-	// 		}
-	// 	}
-	// });
-
-	// //Submit item using "Add Item" button
-	// $(".add-item-btn").click(function(){
-
-	// 	value = $itemValue.val();
-
-	// 	//check to see if empty string
-	// 	if ( value === "" ){
-	// 		$(".error").fadeIn("slow").delay(800).fadeOut("slow");
-	// 	} else {
-	// 		$itemsContainer.append("<li class='item'>" + value + "</li>");
-	// 		$itemValue.val("");
-	// 		value = "";	
-	// 	}
-
-	// });		
-
-
-	// //click an item
-	// $(".container-items").on('click', '.item', function(event){
-
-	// 	//show modal
-	// 	$("#modal-background, #modal").show();
-
-	// 	//get the current item contents and store it in a variable
-	// 	var itemContent = $(event.currentTarget).text();
-
-	// 	//populate textarea content with current "itemContent"
-	// 	$("#editableText").val(itemContent);
-
-	// 	//when user clicks cancel
-	// 	$(".cancel").on("click", function(){
-	// 		$("#editableText").val("");
-	// 		$("#modal-background, #modal").hide();
-	// 		$(".cancel").off("click");
-	// 		$(".update").off("click");
-	// 	});
-
-	// 	//when user clicks update
-	// 	$(".update").on("click", function() {
-	// 		var newItemContent = $("#editableText").val();
-	// 		$(event.currentTarget).text(newItemContent);
-	// 		$("#modal-background, #modal").hide();
-	// 		$(".update").off("click");
-	// 	});
-
-	// });
-	
 });
 
 
