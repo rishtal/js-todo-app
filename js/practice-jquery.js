@@ -20,8 +20,9 @@ $( document ).ready(function() {
 		if( !value ){
 			$(".error").fadeIn("slow").delay(800).fadeOut("slow");
 		} else {
-			$itemsContainer.append("<li class='item'>" + "<input class='checkbox' type='checkbox'>" + "<p>" + value + "</p>" + "<button class='delete-item'>Delete</button>" + "</li>");
+			$itemsContainer.append("<li class='item'>" + "<input class='checkbox' type='checkbox'>" + "<p class='item-content'>" + value + "</p>" + "<button class='delete-item'>Delete</button>" + "</li>");
 			$itemValue.val("");
+			//$itemsContainer.find(".item").hide().fadeIn("slow")
 		}
 	});
 
@@ -56,7 +57,9 @@ $( document ).ready(function() {
 	//click an item, open a window with the contents of item
 	$itemsContainer.on("click", ".item p", function(e) {	
 		$selected = $(e.currentTarget);
-		
+
+		$(this).siblings().remove();
+
 		$editable.val( $selected.text() );
 		$selected.replaceWith($editable.show());
 		$editable.select();
@@ -65,14 +68,14 @@ $( document ).ready(function() {
 			if(e.which === 13) {
 				$editable.hide();
 				$selected.text($editable.val());
-				$editable.replaceWith("<p>" + $selected.text() + "</p>");
+				$editable.replaceWith("<input class='checkbox' type='checkbox'>" + "<p class='item-content'>" + $selected.text() + "</p>" + "<button class='delete-item'>Delete</button>");
 			}
 		});
 
 		$editable.blur( function() {
 			$editable.hide();
 			$selected.text($editable.val());
-			$editable.replaceWith("<p>" + $selected.text() + "</p>");
+			$editable.replaceWith("<input class='checkbox' type='checkbox'>" + "<p class='item-content'>" + $selected.text() + "</p>" + "<button class='delete-item'>Delete</button>");
 		});
 
 	});

@@ -1,3 +1,112 @@
+/**********************************
+GLOBAL
+*********************************/
+* {
+	font-family: 'Source Sans Pro', sans-serif;
+}
+body {
+	margin: 0px;
+	background-color: whitesmoke;
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+.container {
+	width: 960px;
+	margin: 0 auto;
+}
+
+/* input placeholder text */
+input::-webkit-input-placeholder {
+	color: lightgrey;
+}
+input::-moz-placeholder {
+	color: lightgrey;
+}
+input:-moz-placeholder {   /* Older versions of Firefox */
+	color: lightgrey;
+}
+input:-ms-input-placeholder { 
+	color: lightgrey;
+}
+
+
+/**********************************
+TOP NAV
+*********************************/
+
+.top-nav {
+	height: 40px;
+	background-color: #3F7DC2;
+}
+
+/**********************************
+MAIN CONTENT
+*********************************/
+.main-content {
+	background-color: whitesmoke;
+}
+
+.main-content .add-item-wrapper {
+	width: 570px;
+	margin: 0 auto;
+	padding: 70px 70px 0px 70px;
+}
+
+.main-content .add-item-wrapper input {
+	height: 30px;
+	margin: 0px;
+	border: 1px solid lightgrey;
+	background-color: white;
+	width: 380px;
+	font-size: 20px;
+	color: grey;
+	padding: 10px;
+}
+
+.button-add {
+	height: 52px;
+	padding: 15px;
+	margin: 0px;
+	position: relative;
+	font-size: 16px;
+	background-color: #3BB677;
+	border: none;
+	color: white;
+	vertical-align: 2px;
+	cursor: pointer;
+	border-bottom: 4px solid #2B8858;
+}
+
+.button-add:hover {
+	background-color: #1BAA61;
+}
+
+/**********************************
+SINGLE ITEM
+*********************************/
+.container-items .item {
+	list-style: none;
+	margin: 0px;
+	border: 1px solid lightgrey;
+}
+
+.container-items .item .checkbox {
+	display: inline-block;
+}
+
+.container-items .item .item-content {
+	display: inline-block;	
+}
+
+.container-items .item .delete-item {
+	display: none;
+	display: inline-block;
+}
+
+
+
+
+
 a.test {
 	font-weight: bold;
 	font-size: 60px;
@@ -55,18 +164,10 @@ a.test {
 	padding: 0px;
 }
 
-.container-items li {
-	list-style: none;
-	margin: 0px;
-	padding: 0px 0px 10px 0px;
-	border: 1px solid lightgrey;
-	height: 94px;
-}
-
 .done {
 	background-color: blue;
 }
 
-.container-items .item .delete-item {
+.hide {
 	display: none;
 }
