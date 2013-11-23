@@ -29,6 +29,25 @@ input:-ms-input-placeholder {
 	color: lightgrey;
 }
 
+.truncate {
+  width: 444px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.container .container-items .done {
+	background-color: rgb(151, 151, 153);
+}
+
+.container .container-items .done:hover {
+	background-color: rgb(151, 151, 153);
+}
+
+
+.container .container-items .done .item-content {
+	text-decoration: line-through;
+}
 
 /**********************************
 TOP NAV
@@ -57,7 +76,7 @@ MAIN CONTENT
 	margin: 0px;
 	border: 1px solid lightgrey;
 	background-color: white;
-	width: 380px;
+	width: 453px;
 	font-size: 20px;
 	color: grey;
 	padding: 10px;
@@ -87,23 +106,72 @@ SINGLE ITEM
 .container-items .item {
 	list-style: none;
 	margin: 0px;
-	border: 1px solid lightgrey;
+	width: 570px;
+	margin: 0 auto;
+	background-color: #E8EEFD;
+	border-bottom: 1px solid #DADFE9;
+	border-left: 1px solid #DADFE9;
+	border-right: 1px solid #DADFE9;
+	padding-top: 5px;
+}
+
+.container-items .item:hover {
+	background-color: #FFF;
+	cursor: pointer;
+}
+
+.container-items .item:first-child {
+	border-top: 1px solid #DADFE9;
 }
 
 .container-items .item .checkbox {
 	display: inline-block;
+	height: 16px;
+	width: 16px;
+	border: 1px solid black;
+	border-radius: 3px;
+	cursor: pointer;
+	margin: 10px;
 }
 
 .container-items .item .item-content {
-	display: inline-block;	
+	display: inline-block;
+	vertical-align: middle;
+	color: rgb(75, 71, 71);	
+	position: relative;
+	top: -3px;
+	font-size: 17px;
 }
 
 .container-items .item .delete-item {
 	display: none;
-	display: inline-block;
+	position: relative;
+	top: 0px;
+	background-color: rgb(231, 59, 59);
+	border: none;
+	color: white;
+	border-bottom: 3px solid rgb(216, 12, 12);
+	font-size: 13px;
+	letter-spacing: 1px;
+	padding: 5px;
+	height: 29px;
+	left: 22px;
+	cursor: pointer;
 }
 
+.container-items .item .delete-item:hover {
+	background-color: rgb(224, 43, 43);
+}
 
+#editableText {
+	height: 25px;
+	width: 400px;
+	margin: 12px;
+	position: relative;
+	left: 20px;
+	top: -2px;
+	font-size: 17px;
+}
 
 
 
@@ -164,9 +232,7 @@ a.test {
 	padding: 0px;
 }
 
-.done {
-	background-color: blue;
-}
+
 
 .hide {
 	display: none;
